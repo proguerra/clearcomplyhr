@@ -115,14 +115,18 @@ hr.sep{border:0; border-top:1px solid #e7eef6; margin:28px 0}
 .hero .hero-logo{position:absolute; top:20px; right:20px; opacity:0.07; max-width:220px}
 
 
-.hero::after{
-  content:"";
-  position:absolute;
-  top:-20px; right:-20px;
-  width:360px; height:360px;
-  background:url('../img/logo.png') center/contain no-repeat;
-  opacity:.06; pointer-events:none;
-  transform:rotate(-6deg);
+.hero::after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 120px;
+  height: 120px;
+  background: url('../img/logo.png') center/contain no-repeat;
+  opacity: 0.12;
+  pointer-events: none;
+}
+
 }
 .card-rose{background:#fff5f5; border-color:#ffd9d9}
 .card-teal{background:#e6f8f5; border-color:#c8efe8}
