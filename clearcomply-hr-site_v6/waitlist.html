@@ -1,127 +1,210 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ClearComply HR – Waitlist</title>
-  <link rel="stylesheet" href="assets/css/styles.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ClearComply HR — Early Access Waitlist</title>
+  <meta name="description" content="Join the early access list for ClearComply HR — HR compliance for home health, simplified.">
+  <link rel="icon" href="assets/img/logo.png" />
   <style>
-    :root {
-      --accent: #1a936f;
-      --accent-ink: #fff;
-      --ink: #222;
-      --bg: #f9fafb;
-      --muted: #f1f5f9;
-      --shadow: 0 2px 8px rgba(0,0,0,0.08);
+    /* ===== Site color scheme (matches clearcomplyhr.com) ===== */
+    :root{
+      --navy:#0c2a45;
+      --ink:#0b1320;
+      --bg:#ffffff;
+      --muted:#f4f6f8;
+      --accent:#1db6a3;        /* primary teal/green */
+      --accent-ink:#0d685e;
+      --text:#1b2735;
+      --border:#e6edf3;
+      --shadow:0 14px 30px rgba(12,42,69,0.10);
     }
-    body {
-      margin:0; font-family:sans-serif; line-height:1.5; background:var(--bg); color:var(--ink);
+    *{box-sizing:border-box}
+    body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial;color:var(--text);background:var(--bg);line-height:1.6}
+    a{color:var(--navy);text-decoration:none}
+
+    .container{max-width:1180px;margin:0 auto;padding:20px}
+    .cta{display:inline-block;background:var(--accent);color:#fff;padding:12px 18px;border-radius:12px;font-weight:800;box-shadow:var(--shadow)}
+    .cta:hover{filter:brightness(.96)}
+    .card{background:#fff;border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow);padding:24px}
+
+    /* ===== Hero ===== */
+    header.hero{
+      position:relative;overflow:hidden;
+      background:linear-gradient(180deg,#ffffff 0%, #eef7f6 75%);
+      padding:72px 0 48px;
     }
-    header {
-      padding:40px 20px; text-align:center; background:#fff; position:relative;
+    .hero h1{font-size:40px;line-height:1.15;margin:0 0 10px;color:var(--ink)}
+    .hero p.sub{font-size:18px;max-width:760px;margin:0}
+    .hero .watermark{
+      position:absolute;top:20px;right:20px;width:200px;height:200px;opacity:.12;
+      background:url('assets/img/logo.png') center/contain no-repeat;pointer-events:none;
     }
-    header h1 {
-      font-size:2rem; margin-bottom:12px;
+    @media(min-width:1400px){.hero .watermark{width:260px;height:260px}}
+    @media(max-width:900px){.hero .watermark{width:120px;height:120px;top:12px;right:12px}}
+
+    /* ===== 3D Carousels Section ===== */
+    section.showcase{padding:48px 0;background:var(--muted)}
+    .split{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+    @media(max-width:980px){.split{grid-template-columns:1fr}}
+
+    .carousel{
+      position:relative;
+      perspective:1000px;
+      height:420px;
+      border-radius:18px;
+      background:#fff;
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+      overflow:hidden;
     }
-    header p {
-      font-size:1.2rem; margin-bottom:20px; max-width:600px; margin-left:auto; margin-right:auto;
+    .carousel h3{
+      position:absolute;top:12px;left:16px;z-index:2;margin:0;
+      padding:6px 10px;border-radius:999px;background:#e6f8f5;color:var(--accent-ink);font-size:13px;font-weight:800;letter-spacing:.3px;text-transform:uppercase;
     }
-    .btn {
-      background:var(--accent); color:var(--accent-ink); padding:12px 24px; border-radius:8px;
-      font-size:1rem; border:none; cursor:pointer; text-decoration:none; display:inline-block;
+    .ring{
+      position:absolute;top:50%;left:50%;
+      transform-style:preserve-3d;
+      transform:translate(-50%,-50%) rotateY(0deg);
+      transition:transform .8s cubic-bezier(.2,.8,.2,1);
+      width:80%;height:70%;
     }
-    section {padding:60px 20px; max-width:1000px; margin:auto;}
-    .form-card {
-      background:#fff; padding:30px; border-radius:12px; box-shadow:var(--shadow);
+    .slide{
+      position:absolute;top:50%;left:50%;
+      transform-style:preserve-3d;
+      width:66%;height:78%;
+      border-radius:14px;overflow:hidden;
+      box-shadow:0 12px 24px rgba(0,0,0,.12);
+      background:#000;
     }
-    form {display:grid; gap:16px;}
-    input {
-      width:100%; padding:12px; border:1px solid #ccc; border-radius:6px; font-size:1rem;
+    .slide img{width:100%;height:100%;object-fit:cover;display:block;opacity:.96}
+    .slide figcaption{
+      position:absolute;bottom:0;left:0;right:0;
+      background:linear-gradient(180deg,transparent,rgba(0,0,0,.65));
+      color:#fff;padding:12px 14px;font-size:14px
     }
-    .features {
-      display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:20px;
+    /* position slides around a ring */
+    .slide[data-pos="0"]{transform:rotateY(0deg) translateZ(420px) translate(-50%,-50%)}
+    .slide[data-pos="1"]{transform:rotateY(60deg) translateZ(420px) translate(-50%,-50%)}
+    .slide[data-pos="2"]{transform:rotateY(120deg) translateZ(420px) translate(-50%,-50%)}
+    .slide[data-pos="3"]{transform:rotateY(180deg) translateZ(420px) translate(-50%,-50%)}
+    .slide[data-pos="4"]{transform:rotateY(240deg) translateZ(420px) translate(-50%,-50%)}
+    .slide[data-pos="5"]{transform:rotateY(300deg) translateZ(420px) translate(-50%,-50%)}
+
+    .ctrl{
+      position:absolute;inset:auto 0 14px 0;display:flex;justify-content:center;gap:10px;z-index:3
     }
-    .feature {
-      background:#fff; padding:20px; border-radius:12px; box-shadow:var(--shadow);
+    .ctrl button{
+      background:#0f314e;color:#fff;border:0;border-radius:12px;padding:10px 12px;font-weight:800;cursor:pointer
     }
-    .feature h3 {margin-top:0;}
-    .screenshot {text-align:center;}
-    .trust {background:#fff; border-radius:12px; padding:30px; box-shadow:var(--shadow);}
-    @media (max-width:600px){
-      header h1{font-size:1.6rem;}
-      header p{font-size:1rem;}
-    }
+    .ctrl button.secondary{background:#e6f8f5;color:var(--accent-ink)}
+    .ctrl button:focus{outline:2px solid #fff;outline-offset:2px}
+
+    /* ===== Waitlist Form ===== */
+    section.form-wrap{padding:48px 0}
+    .lead{max-width:900px;font-size:18px}
+    .lead b{color:var(--accent-ink)}
+    form.waitlist{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    form.waitlist .full{grid-column:1/-1}
+    label{display:block;font-weight:800;margin-bottom:6px}
+    input{width:100%;padding:12px 12px;border:1px solid #cfd9e6;border-radius:10px;font:inherit}
+    .submit-row{grid-column:1/-1;display:flex;gap:12px;align-items:center}
+    .hint{color:#6c7d92}
+    @media(max-width:860px){form.waitlist{grid-template-columns:1fr}}
+
+    footer{padding:24px 0;text-align:center;color:#7f8aa1;font-size:14px}
   </style>
 </head>
 <body>
 
-  <!-- Hero -->
-  <header>
-    <h1>HR Compliance for Home Health, Simplified.</h1>
-    <p>Onboard employees. Track credentials. Pass every audit — without logins, lost paperwork, or missed expirations.</p>
-    <a href="#waitlist" class="btn">Join the Early Access List</a>
+  <!-- 🖥️ Hero Section -->
+  <header class="hero">
+    <div class="watermark" aria-hidden="true"></div>
+    <div class="container">
+      <h1>HR Compliance for Home Health, Simplified.</h1>
+      <p class="sub">Onboard employees. Track credentials. Pass every audit — without logins, lost paperwork, or missed expirations.</p>
+      <p style="margin-top:18px"><a href="#waitlist" class="cta">Join the Early Access List</a></p>
+    </div>
   </header>
 
-  <!-- Waitlist Form -->
-  <section id="waitlist">
-    <div class="form-card">
-      <p><strong>Be among the first to access ClearComply HR</strong> — the first no-login, fully automated HR compliance platform designed just for home health and hospice providers.</p>
-      <p><strong>💥 Join now and get 10% off your subscription for life.</strong></p>
-      <form action="#" method="POST">
-        <input type="text" name="business_name" placeholder="Business Name *" required />
-        <input type="text" name="contact_name" placeholder="Business Contact Name *" required />
-        <input type="email" name="email" placeholder="Email Address *" required />
-        <input type="tel" name="phone" placeholder="Phone Number (optional)" />
-        <button type="submit" class="btn">Reserve My Spot</button>
-      </form>
+  <!-- ⭐ Split 3D Carousels -->
+  <section class="showcase">
+    <div class="container">
+      <div class="split">
+        <!-- Left: Key Features 3D Carousel -->
+        <div class="carousel" id="features-carousel" aria-label="Key Features carousel">
+          <h3>Key Features</h3>
+          <div class="ring">
+            <!-- Replace images with your feature visuals/icons -->
+            <figure class="slide" data-pos="0">
+              <img src="https://via.placeholder.com/900x600?text=No+Login+Required" alt="No Login Required for Employees">
+              <figcaption>No Login Required for Employees — private magic links.</figcaption>
+            </figure>
+            <figure class="slide" data-pos="1">
+              <img src="https://via.placeholder.com/900x600?text=Compliance+Dashboard" alt="Real-Time Compliance Dashboard">
+              <figcaption>Real-Time Compliance Dashboard — see gaps instantly.</figcaption>
+            </figure>
+            <figure class="slide" data-pos="2">
+              <img src="https://via.placeholder.com/900x600?text=OIG+%26+License+Checks" alt="Monthly OIG & License Checks">
+              <figcaption>Monthly OIG &amp; License Checks — alerts keep you audit-ready.</figcaption>
+            </figure>
+            <figure class="slide" data-pos="3">
+              <img src="https://via.placeholder.com/900x600?text=SMS+%26+Email+Reminders" alt="SMS & Email Reminders">
+              <figcaption>SMS &amp; Email Reminders — staff &amp; HR notified before expirations.</figcaption>
+            </figure>
+            <figure class="slide" data-pos="4">
+              <img src="https://via.placeholder.com/900x600?text=Google+Drive+Sync" alt="Google Drive Sync">
+              <figcaption>Google Drive Sync — audit-ready folders by employee.</figcaption>
+            </figure>
+            <figure class="slide" data-pos="5">
+              <img src="https://via.placeholder.com/900x600?text=In-Service+Uploads" alt="In-Service Training Uploads">
+              <figcaption>In‑Service Training Uploads — assign, complete, and file.</figcaption>
+            </figure>
+          </div>
+          <div class="ctrl" aria-hidden="false">
+            <button class="prev" aria-label="Previous slide">‹ Prev</button>
+            <button class="next" aria-label="Next slide">Next ›</button>
+          </div>
+        </div>
+
+        <!-- Right: Product Screenshots 3D Carousel -->
+        <div class="carousel" id="screens-carousel" aria-label="Product Screenshots carousel">
+          <h3>Product Screens</h3>
+          <div class="ring">
+            <!-- Replace placeholders with real screenshots -->
+            <figure class="slide" data-pos="0">
+              <img src="https://via.placeholder.com/1000x650?text=Dashboard" alt="Dashboard overview">
+              <figcaption>Dashboard — at‑a‑glance compliance status.</figcaption>
+            </figure>
+            <figure class="slide" data-pos="1">
+              <img src="https://via.placeholder.com/1000x650?text=Employee+Profile" alt="Employee profile documents">
+              <figcaption>Employee Profile — documents, expirations, and notes.</figcaption>
+            </figure>
+            <figure class="slide" data-pos="2">
+              <img src="https://via.placeholder.com/1000x650?text=Checklist" alt="Role-based checklist">
+              <figcaption>Role Checklist — RN/LVN/CNA requirements tracked.</figcaption>
+            </figure>
+            <figure class="slide" data-pos="3">
+              <img src="https://via.placeholder.com/1000x650?text=OIG+Log" alt="OIG/SAM checks log">
+              <figcaption>OIG/SAM — logs &amp; rechecks for audits.</figcaption>
+            </figure>
+            <figure class="slide" data-pos="4">
+              <img src="https://via.placeholder.com/1000x650?text=Drive+Sync" alt="Google Drive sync settings">
+              <figcaption>Google Drive Sync — mirroring configured in seconds.</figcaption>
+            </figure>
+            <figure class="slide" data-pos="5">
+              <img src="https://via.placeholder.com/1000x650?text=Alerts" alt="Alerts and reminders">
+              <figcaption>Alerts &amp; Reminders — automated, on time, documented.</figcaption>
+            </figure>
+          </div>
+          <div class="ctrl">
+            <button class="prev" aria-label="Previous slide">‹ Prev</button>
+            <button class="next" aria-label="Next slide">Next ›</button>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- Features -->
-  <section>
-    <h2>Key Features</h2>
-    <div class="features">
-      <div class="feature">
-        <h3>No Login Required for Employees</h3>
-        <p>New hires upload all required documents through their own private link — no passwords, no wasted time.</p>
-      </div>
-      <div class="feature">
-        <h3>Real-Time Compliance Dashboard</h3>
-        <p>Instantly see which employees are missing documents, have expiring licenses, or are due for in-service trainings.</p>
-      </div>
-      <div class="feature">
-        <h3>Monthly OIG & License Checks</h3>
-        <p>Stay audit-ready. The system runs exclusion checks and license status updates automatically and alerts HR.</p>
-      </div>
-      <div class="feature">
-        <h3>SMS & Email Reminders</h3>
-        <p>Automatically notifies staff (and HR) when documents are due, training is required, or licenses are about to expire. Employees can also upload updated documents at any time.</p>
-      </div>
-      <div class="feature">
-        <h3>Google Drive Sync</h3>
-        <p>All files are saved and organized by employee, in folders ready for state and CMS audits.</p>
-      </div>
-      <div class="feature">
-        <h3>In-Service Training Uploads</h3>
-        <p>Assign annual training requirements with one click. Staff can complete and upload directly through their unique link.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Screenshot -->
-  <section class="screenshot">
-    <h2>Built for simplicity. Designed for healthcare.</h2>
-    <p>Preview ClearComply HR’s dashboard and document tracking tools. No clunky software. No endless paperwork.</p>
-    <img src="https://via.placeholder.com/700x400" alt="ClearComply HR Screenshot">
-  </section>
-
-  <!-- Trust/About -->
-  <section>
-    <div class="trust">
-      <h2>Built by Healthcare Operators, Not Software Geeks</h2>
-      <p>We built ClearComply HR because we were tired of missing TB tests, expired CPR cards, and clunky onboarding tools that never worked for our caregivers. This platform is designed for real-world operators — like you — who need to stay compliant and get things done.</p>
-    </div>
-  </section>
-
-</body>
-</html>
+  <!-- 📋 Waitlist Form Section (below carousels) -->
+  <section id="
