@@ -1,1 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ClearComply HR – Waitlist</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <style>
+    :root {
+      --accent: #1a936f;
+      --accent-ink: #fff;
+      --ink: #222;
+      --bg: #f9fafb;
+      --muted: #f1f5f9;
+      --shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    body {
+      margin:0; font-family:sans-serif; line-height:1.5; background:var(--bg); color:var(--ink);
+    }
+    header {
+      padding:40px 20px; text-align:center; background:#fff; position:relative;
+    }
+    header h1 {
+      font-size:2rem; margin-bottom:12px;
+    }
+    header p {
+      font-size:1.2rem; margin-bottom:20px; max-width:600px; margin-left:auto; margin-right:auto;
+    }
+    .btn {
+      background:var(--accent); color:var(--accent-ink); padding:12px 24px; border-radius:8px;
+      font-size:1rem; border:none; cursor:pointer; text-decoration:none; display:inline-block;
+    }
+    section {padding:60px 20px; max-width:1000px; margin:auto;}
+    .form-card {
+      background:#fff; padding:30px; border-radius:12px; box-shadow:var(--shadow);
+    }
+    form {display:grid; gap:16px;}
+    input {
+      width:100%; padding:12px; border:1px solid #ccc; border-radius:6px; font-size:1rem;
+    }
+    .features {
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:20px;
+    }
+    .feature {
+      background:#fff; padding:20px; border-radius:12px; box-shadow:var(--shadow);
+    }
+    .feature h3 {margin-top:0;}
+    .screenshot {text-align:center;}
+    .trust {background:#fff; border-radius:12px; padding:30px; box-shadow:var(--shadow);}
+    @media (max-width:600px){
+      header h1{font-size:1.6rem;}
+      header p{font-size:1rem;}
+    }
+  </style>
+</head>
+<body>
 
+  <!-- Hero -->
+  <header>
+    <h1>HR Compliance for Home Health, Simplified.</h1>
+    <p>Onboard employees. Track credentials. Pass every audit — without logins, lost paperwork, or missed expirations.</p>
+    <a href="#waitlist" class="btn">Join the Early Access List</a>
+  </header>
+
+  <!-- Waitlist Form -->
+  <section id="waitlist">
+    <div class="form-card">
+      <p><strong>Be among the first to access ClearComply HR</strong> — the first no-login, fully automated HR compliance platform designed just for home health and hospice providers.</p>
+      <p><strong>💥 Join now and get 10% off your subscription for life.</strong></p>
+      <form action="#" method="POST">
+        <input type="text" name="business_name" placeholder="Business Name *" required />
+        <input type="text" name="contact_name" placeholder="Business Contact Name *" required />
+        <input type="email" name="email" placeholder="Email Address *" required />
+        <input type="tel" name="phone" placeholder="Phone Number (optional)" />
+        <button type="submit" class="btn">Reserve My Spot</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section>
+    <h2>Key Features</h2>
+    <div class="features">
+      <div class="feature">
+        <h3>No Login Required for Employees</h3>
+        <p>New hires upload all required documents through their own private link — no passwords, no wasted time.</p>
+      </div>
+      <div class="feature">
+        <h3>Real-Time Compliance Dashboard</h3>
+        <p>Instantly see which employees are missing documents, have expiring licenses, or are due for in-service trainings.</p>
+      </div>
+      <div class="feature">
+        <h3>Monthly OIG & License Checks</h3>
+        <p>Stay audit-ready. The system runs exclusion checks and license status updates automatically and alerts HR.</p>
+      </div>
+      <div class="feature">
+        <h3>SMS & Email Reminders</h3>
+        <p>Automatically notifies staff (and HR) when documents are due, training is required, or licenses are about to expire. Employees can also upload updated documents at any time.</p>
+      </div>
+      <div class="feature">
+        <h3>Google Drive Sync</h3>
+        <p>All files are saved and organized by employee, in folders ready for state and CMS audits.</p>
+      </div>
+      <div class="feature">
+        <h3>In-Service Training Uploads</h3>
+        <p>Assign annual training requirements with one click. Staff can complete and upload directly through their unique link.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Screenshot -->
+  <section class="screenshot">
+    <h2>Built for simplicity. Designed for healthcare.</h2>
+    <p>Preview ClearComply HR’s dashboard and document tracking tools. No clunky software. No endless paperwork.</p>
+    <img src="https://via.placeholder.com/700x400" alt="ClearComply HR Screenshot">
+  </section>
+
+  <!-- Trust/About -->
+  <section>
+    <div class="trust">
+      <h2>Built by Healthcare Operators, Not Software Geeks</h2>
+      <p>We built ClearComply HR because we were tired of missing TB tests, expired CPR cards, and clunky onboarding tools that never worked for our caregivers. This platform is designed for real-world operators — like you — who need to stay compliant and get things done.</p>
+    </div>
+  </section>
+
+</body>
+</html>
